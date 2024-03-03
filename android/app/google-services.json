@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "931558845770",
+    "project_id": "trainwithsomeone",
+    "storage_bucket": "trainwithsomeone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931558845770:android:7fb9d2a29e00086f58a5b3",
+        "android_client_info": {
+          "package_name": "com.example.trainwithsomeone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBH17zPv5FATGmSRMFy9xKi9SfV3qpZCuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

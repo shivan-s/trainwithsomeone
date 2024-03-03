@@ -5,6 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 
+FirebaseDatabase database = FirebaseDatabase.instance;
+
 void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
@@ -16,32 +18,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseDatabase database = FirebaseDatabase.instance;
-    final db = FirebaseFirestore.instance;
-
-    const sessions = ["Test1", "Test2", "Test3", "Test4"];
     const String appTitle = "TrainWithSomeone";
     return MaterialApp(
       title: appTitle,
       home: Scaffold(
         appBar: AppBar(
             title: const Text(appTitle), backgroundColor: Colors.blueGrey),
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-              child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    minHeight: constraints.maxHeight,
-                    maxWidth: constraints.maxWidth,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children:
-                        sessions.map((s) => SessionSection(name: s)).toList(),
-                  )),
-            );
-          },
+        body: SingleChildScrollView(
+          child: ConstrainedBox(
+              constraints: const BoxConstraints.expand(),
+              child: const Conainer(
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SessionSection(name: "Test1"),
+                      SessionSection(name: "Test2"),
+                      SessionSection(name: "Test3"),
+                    ]),
+              )),
         ),
       ),
     );
@@ -54,13 +48,13 @@ class SessionSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: ExpansionTile(
-          title: Center(child: Text(name)),
-          children: [Text(name)],
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(children: [
+        Container(
+          child: Text(name),
         ),
-      ),
-    );
+      ]),
+    ));
   }
 }
